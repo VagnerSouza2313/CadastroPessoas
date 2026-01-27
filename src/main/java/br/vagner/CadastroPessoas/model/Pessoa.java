@@ -3,7 +3,7 @@ package br.vagner.CadastroPessoas.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "tb_pessoa")
+@Table(name = "tb_cadastro")
 public class Pessoa {
 
     @Id
