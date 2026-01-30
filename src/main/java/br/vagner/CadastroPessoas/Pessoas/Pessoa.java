@@ -1,5 +1,6 @@
-package br.vagner.CadastroPessoas.model;
+package br.vagner.CadastroPessoas.Pessoas;
 
+import br.vagner.CadastroPessoas.Atividades.Atividade;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +14,10 @@ public class Pessoa {
     private String nome;
     private int idade;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "atividades_id")
+    private Atividade atividades;
 
     public Pessoa() {
     }
