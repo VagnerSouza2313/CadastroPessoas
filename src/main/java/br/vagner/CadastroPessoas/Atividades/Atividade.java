@@ -2,8 +2,14 @@ package br.vagner.CadastroPessoas.Atividades;
 
 import br.vagner.CadastroPessoas.Pessoas.Pessoa;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Table(name = "tb_atividades")
 public class Atividade {
 
@@ -14,15 +20,8 @@ public class Atividade {
     private String atividade;
     private String grau;
 
-    @OneToMany
+    @OneToMany(mappedBy = "atividades")
     private Pessoa pessoa;
 
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
 
 }
