@@ -18,8 +18,11 @@ public class Pessoa {
     private long id;
 
     private String nome;
-    private int idade;
+
+    @Column(unique = true)
     private String email;
+
+    private int idade;
 
     @ManyToOne
     @JoinColumn(name = "atividades_id")
