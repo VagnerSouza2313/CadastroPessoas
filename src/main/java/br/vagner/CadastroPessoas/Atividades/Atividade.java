@@ -20,8 +20,5 @@ public class Atividade {
     private String atividade;
     private String grau;
 
-    @OneToMany(mappedBy = "atividades")
-    private Pessoa pessoa;
-
 
 }
