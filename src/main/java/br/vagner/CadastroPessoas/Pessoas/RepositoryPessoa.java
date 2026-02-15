@@ -1,4 +1,6 @@
 package br.vagner.CadastroPessoas.Pessoas;
 
-public interface RepositoryPessoa {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface RepositoryPessoa extends JpaRepository<Pessoa, Long> {
 }
