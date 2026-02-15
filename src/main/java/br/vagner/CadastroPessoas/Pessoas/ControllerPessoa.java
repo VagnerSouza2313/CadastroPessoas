@@ -3,7 +3,7 @@ package br.vagner.CadastroPessoas.Pessoas;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("pessoas")
 public class ControllerPessoa {
 
     @GetMapping("/pessoa")
