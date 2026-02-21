@@ -2,28 +2,36 @@ package br.vagner.CadastroPessoas.Atividades;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("atividades")
 public class AtividadeController {
 
-    @PostMapping("atividades/criar")
+    private ServiceAtividade  serviceAtividade;
+
+    public AtividadeController(ServiceAtividade serviceAtividade){
+        this.serviceAtividade = serviceAtividade;
+    }
+
+    @PostMapping("/criar")
     public String criarAtividade() {
         return "Criar Atividade";
     }
 
-    @PutMapping("atividades/alterar")
+    @PutMapping("/alterar")
     public String alterarAtividade() {
         return "Alterar Atividade";
     }
 
-    @DeleteMapping("atividades/deletar")
+    @DeleteMapping("/deletar")
     public String deletarAtividade() {
         return "Deletar Atividade";
     }
 
-    @GetMapping("atividades/listar")
-    public String listarAtividades() {
-        return "Listar Atividades";
+    @GetMapping("/listar")
+    public List<Atividade>  listarAtividades() {
+        return serviceAtividade.ListarAtividades();
     }
 
 }
