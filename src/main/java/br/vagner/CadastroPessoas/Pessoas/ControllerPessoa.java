@@ -2,9 +2,17 @@ package br.vagner.CadastroPessoas.Pessoas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("pessoas")
 public class ControllerPessoa {
+
+    private ServicePessoa servicePessoa;
+
+    public ControllerPessoa(ServicePessoa servicePessoa) {
+        this.servicePessoa = servicePessoa;
+    }
 
     @GetMapping("/pessoa")
     public String teste(){
@@ -26,8 +34,8 @@ public class ControllerPessoa {
 
     //Mostrar todas as pessoas (READ)
     @GetMapping("/todos")
-    public String MostrarTodasPessoas(){
-        return  "Mostrando Pessoas";
+    public List<Pessoa> ListarPessoas(){
+        return  servicePessoa.ListarPessoas();
     }
 
     //Mostrar pessoas por ID (READ)
