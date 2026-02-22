@@ -22,14 +22,14 @@ public class ControllerPessoa {
 
     //Adicionar pessoa (CREATE)
     @PostMapping("/adicionar")
-    public String criarNinja(){
-        return  "Criando novo pessoa";
+    public Pessoa pessoa(@RequestBody Pessoa pessoa){
+        return servicePessoa.SalvarPessoa(pessoa);
     }
 
     //Procurar pessoa por id (CREATE)
-    @GetMapping("/buscaID")
-    public String buscaID(){
-        return "Buscando Pessoa";
+    @GetMapping("/buscaID/{id}")
+    public Pessoa buscaID(@PathVariable Long id){
+        return servicePessoa.BuscarPessoa(id);
     }
 
     //Mostrar todas as pessoas (READ)
