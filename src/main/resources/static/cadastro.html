@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <h2>Cadastrar Pessoa</h2>
+
+    <form id="formPessoa">
+
+        <label>Nome:</label>
+        <input type="text" id="nome" required>
+        <br>
+        <br>
+
+        <label>Email:</label>
+        <input type="text" id="email" required>
+        <br>
+        <br>
+
+        <label>Idade:</label>
+        <input type="number" id="idade" required>
+        <br>
+        <br>
+
+        <label>Status Social:</label>
+        <input type="text" id="statusSocial" required>
+        <br>
+        <br>
+
+        <label>Atividade:</label>
+        <input type="number" id="atividade" required>
+        <br>
+        <br>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <script>
+        document.getElementById("formPessoa").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const pessoa = {
+                nome: document.getElementById("nome").value,
+                email: document.getElementById("email").value,
+                idade: document.getElementById("idade").value,
+
+                statusSocial: document.getElementById("statusSocial").value,
+
+                atividades: {
+                    id: document.getElementById("atividade").value
+                }
+            };
+
+            fetch("http://localhost:8080/pessoas/adicionar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pessoa)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Pessoa cadastrada com sucesso!");
+                console.log(data);
+            })
+            .catch(error => console.error(error));
+        });
+    </script>
+
+</body>
+</html>
