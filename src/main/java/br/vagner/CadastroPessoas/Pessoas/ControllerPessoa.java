@@ -51,9 +51,9 @@ public class ControllerPessoa {
     }
 
     //Deletar pessoa (DELETE)
-    @DeleteMapping("/deletarID")
-    public String deletarPessoaPorID(){
-        return  "Deletando Pessoa por ID";
+    @DeleteMapping("/deletarID/{id}")
+    public void deletarPessoaPorID(@PathVariable Long id ){
+        servicePessoa.deletarPessoa(id);
     }
 
 
