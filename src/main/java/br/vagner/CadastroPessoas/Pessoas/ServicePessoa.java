@@ -30,4 +30,9 @@ public class ServicePessoa {
         return repositoryPessoa.save(pessoa);
     }
 
+    //Deletar pessoa - Metodo void
+    public void deletarPessoa(Long id){
+        repositoryPessoa.deleteById(id);
+    }
+
 }
