@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+
+<h1>Lista de Pessoas</h1>
+
+<button onclick="carregarPessoas()">CARREGAR PESSOAS</button>
+
+<ul id="listaPessoas"></ul>
+
+<a href="main.html">Voltar</a>
+
+<script>
+    function carregarPessoas() {
+
+        fetch("http://localhost:8080/pessoas/todos")
+            .then(response => response.json())
+            .then(pessoas => {
+
+                const lista = document.getElementById("listaPessoas");
+                lista.innerHTML = "";
+
+                pessoas.forEach(pessoa => {
+
+                    const li = document.createElement("li");
+
+                    const atividadesTexto =
+                        pessoa.atividades && pessoa.atividades.length > 0
+                            ? pessoa.atividades.map(a => a.descricao).join(", ")
+                            : "Sem atividades";
+
+                    li.textContent = `
+    ID: ${pessoa.id} |
+    Nome: ${pessoa.nome} |
+    Email: ${pessoa.email} |
+    Idade: ${pessoa.idade} |
+    Status Social: ${pessoa.statusSocial} |
+    Atividades: ${atividadesTexto}
+    `;
+
+                    lista.appendChild(li);
+                });
+
+            })
+            .catch(error => console.error("Erro:", error));
+    }
+</script>
+
+</body>
+</html>
