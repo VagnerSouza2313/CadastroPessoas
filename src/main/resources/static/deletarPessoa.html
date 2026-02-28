@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deletar Pessoa</title>
+</head>
+<body>
+
+    <h1>Deletar Pessoa</h1>
+
+    <form id="formDelete">
+
+        <label>ID da pessoa que será deletada: </label>
+        <input type="number" name="idPessoa" id="idPessoa" required>
+        <br>
+        <br>
+
+        <button type="submit">DELETAR</button> <br><br>
+
+        <a href="main.html">Voltar</a>
+
+    </form>
+    <script>
+        document.getElementById("formDelete").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const id = document.getElementById("idPessoa").value;
+
+            fetch(`http://localhost:8080/pessoas/deletarID/${id}`, {
+                method: "DELETE"
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao deletar");
+                }
+                alert("Pessoa deletada com sucesso");
+            })
+            .catch(error => console.error(error));
+        });
+    </script>
+
+</body>
+</html>
