@@ -35,4 +35,13 @@ public class ServicePessoa {
         repositoryPessoa.deleteById(id);
     }
 
+    //Atualizar pessoa
+    public Pessoa atualizarPessoa(Long id, Pessoa pessoa){
+        if (repositoryPessoa.existsById(id)){
+            pessoa.setId(id);
+            return repositoryPessoa.save(pessoa);
+        }
+        return null;
+    }
+
 }
