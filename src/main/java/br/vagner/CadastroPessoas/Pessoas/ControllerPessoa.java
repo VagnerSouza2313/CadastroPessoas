@@ -22,7 +22,7 @@ public class ControllerPessoa {
 
     //Adicionar pessoa (CREATE)
     @PostMapping("/adicionar")
-    public Pessoa pessoa(@RequestBody Pessoa pessoa){
+    public PessoaDTO pessoa(@RequestBody PessoaDTO pessoa){
         return servicePessoa.SalvarPessoa(pessoa);
     }
 

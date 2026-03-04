@@ -9,9 +9,11 @@ import java.util.Optional;
 public class ServicePessoa {
 
     private RepositoryPessoa repositoryPessoa;
+    private PessoaMapper pessoaMapper;
 
-    public  ServicePessoa(RepositoryPessoa repositoryPessoa1){
-        this.repositoryPessoa = repositoryPessoa1;
+    public ServicePessoa(RepositoryPessoa repositoryPessoa, PessoaMapper pessoaMapper) {
+        this.repositoryPessoa = repositoryPessoa;
+        this.pessoaMapper = pessoaMapper;
     }
 
     //Listar pessoas
@@ -26,8 +28,10 @@ public class ServicePessoa {
     }
 
     //Criar pessoa
-    public Pessoa SalvarPessoa(Pessoa pessoa){
-        return repositoryPessoa.save(pessoa);
+    public PessoaDTO SalvarPessoa(PessoaDTO pessoaDTO){
+        Pessoa pessoa1 = pessoaMapper.map(pessoaDTO);
+        pessoa1 = repositoryPessoa.save(pessoa1);
+        return pessoaMapper.map(pessoa1);
     }
 
     //Deletar pessoa - Metodo void
