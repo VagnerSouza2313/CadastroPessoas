@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ServicePessoa {
@@ -17,14 +18,18 @@ public class ServicePessoa {
     }
 
     //Listar pessoas
-    public List<Pessoa> ListarPessoas(){
-        return repositoryPessoa.findAll();
+    public List<PessoaDTO> ListarPessoas(){
+        List<Pessoa> pessoas = repositoryPessoa.findAll();
+      return  pessoas.stream()
+                .map(pessoaMapper::map)
+                .collect(Collectors.toList());
     }
+
     
     //Listar por id
-    public Pessoa BuscarPessoa(Long id){
+    public PessoaDTO BuscarPessoa(Long id){
         Optional<Pessoa> pessoaID = repositoryPessoa.findById(id);
-        return pessoaID.orElse(null);
+        return pessoaID.map(pessoaMapper::map).orElse(null);
     }
 
     //Criar pessoa
@@ -40,10 +45,13 @@ public class ServicePessoa {
     }
 
     //Atualizar pessoa
-    public Pessoa atualizarPessoa(Long id, Pessoa pessoa){
-        if (repositoryPessoa.existsById(id)){
-            pessoa.setId(id);
-            return repositoryPessoa.save(pessoa);
+    public PessoaDTO atualizarPessoa(Long id, PessoaDTO pessoa){
+        Optional<Pessoa> pessoaExistenteID = repositoryPessoa.findById(id);
+        if (pessoaExistenteID.isPresent()){
+            Pessoa pessoaAtualizado = pessoaMapper.map(pessoa);
+            pessoaAtualizado.setId(id);
+            Pessoa pessoaSalvo = repositoryPessoa.save(pessoaAtualizado);
+            return pessoaMapper.map(pessoaSalvo);
         }
         return null;
     }

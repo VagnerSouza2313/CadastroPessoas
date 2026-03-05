@@ -28,13 +28,13 @@ public class ControllerPessoa {
 
     //Procurar pessoa por id (CREATE)
     @GetMapping("/buscaID/{id}")
-    public Pessoa buscaID(@PathVariable Long id){
+    public PessoaDTO buscaID(@PathVariable Long id){
         return servicePessoa.BuscarPessoa(id);
     }
 
     //Mostrar todas as pessoas (READ)
     @GetMapping("/todos")
-    public List<Pessoa> ListarPessoas(){
+    public List<PessoaDTO> ListarPessoas(){
         return  servicePessoa.ListarPessoas();
     }
 
@@ -46,7 +46,7 @@ public class ControllerPessoa {
 
     //Alterar dados da pessoa (UPDATE)
     @PutMapping("/alterarID/{id}")
-    public Pessoa alterarPessoaPorID(@PathVariable Long id, @RequestBody Pessoa pessoa){
+    public PessoaDTO alterarPessoaPorID(@PathVariable Long id, @RequestBody PessoaDTO pessoa){
         return servicePessoa.atualizarPessoa(id, pessoa);
     }
 
