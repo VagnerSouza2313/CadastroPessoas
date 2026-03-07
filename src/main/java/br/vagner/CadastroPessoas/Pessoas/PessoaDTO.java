@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//Classe para tirar a responsabilidade da entidade Pessoa, não acessando diretamente minha entidade
+//Classe para tirar a responsabilidade da
+//entidade Pessoa, não acessando diretamente minha entidade
 public class PessoaDTO {
 
     private Long id;
