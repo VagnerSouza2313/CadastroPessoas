@@ -26,12 +26,6 @@ public class ControllerPessoa {
         return servicePessoa.SalvarPessoa(pessoa);
     }
 
-    //Procurar pessoa por id (CREATE)
-    @GetMapping("/buscaID/{id}")
-    public PessoaDTO buscaID(@PathVariable Long id){
-        return servicePessoa.BuscarPessoa(id);
-    }
-
     //Mostrar todas as pessoas (READ)
     @GetMapping("/todos")
     public List<PessoaDTO> ListarPessoas(){
@@ -39,9 +33,9 @@ public class ControllerPessoa {
     }
 
     //Mostrar pessoas por ID (READ)
-    @GetMapping("/todosID")
-    public String MostrarPorID(){
-        return  "Mostrando Pessoa por ID";
+    @GetMapping("/todosID/{id}")
+    public PessoaDTO buscaID(@PathVariable Long id){
+        return servicePessoa.BuscarPessoa(id);
     }
 
     //Alterar dados da pessoa (UPDATE)
