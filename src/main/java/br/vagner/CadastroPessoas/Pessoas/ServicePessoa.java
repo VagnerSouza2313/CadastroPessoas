@@ -24,7 +24,6 @@ public class ServicePessoa {
                 .map(pessoaMapper::map)
                 .collect(Collectors.toList());
     }
-
     
     //Listar por id
     public PessoaDTO BuscarPessoa(Long id){
@@ -39,21 +38,22 @@ public class ServicePessoa {
         return pessoaMapper.map(pessoa1);
     }
 
-    //Deletar pessoa - Metodo void
-    public void deletarPessoa(Long id){
-        repositoryPessoa.deleteById(id);
-    }
-
     //Atualizar pessoa
-    public PessoaDTO atualizarPessoa(Long id, PessoaDTO pessoa){
+    public PessoaDTO atualizarPessoa(Long id, PessoaDTO pessoaDTO){
         Optional<Pessoa> pessoaExistenteID = repositoryPessoa.findById(id);
         if (pessoaExistenteID.isPresent()){
-            Pessoa pessoaAtualizado = pessoaMapper.map(pessoa);
+            Pessoa pessoaAtualizado = pessoaMapper.map(pessoaDTO);
             pessoaAtualizado.setId(id);
             Pessoa pessoaSalvo = repositoryPessoa.save(pessoaAtualizado);
             return pessoaMapper.map(pessoaSalvo);
         }
         return null;
     }
+
+    //Deletar pessoa - Metodo void
+    public void deletarPessoa(Long id){
+        repositoryPessoa.deleteById(id);
+    }
+
 
 }
