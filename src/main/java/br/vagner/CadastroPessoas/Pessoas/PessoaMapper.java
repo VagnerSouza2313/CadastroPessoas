@@ -13,7 +13,6 @@ public class PessoaMapper {
         pessoa.setAtividades(pessoaDTO.getAtividades());
         pessoa.setStatusSocial(pessoaDTO.getStatusSocial());
         pessoa.setAtividades(pessoaDTO.getAtividades());
-
         return pessoa;
     }
 
