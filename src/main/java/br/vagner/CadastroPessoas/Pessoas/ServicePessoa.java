@@ -42,8 +42,12 @@ public class ServicePessoa {
     public PessoaDTO atualizarPessoa(Long id, PessoaDTO pessoaDTO){
         Optional<Pessoa> pessoaExistenteID = repositoryPessoa.findById(id);
         if (pessoaExistenteID.isPresent()){
-            Pessoa pessoaAtualizado = pessoaMapper.map(pessoaDTO);
-            pessoaAtualizado.setId(id);
+            Pessoa pessoaAtualizado = pessoaExistenteID.get();
+            pessoaAtualizado.setNome(pessoaDTO.getNome());
+            pessoaAtualizado.setEmail(pessoaDTO.getEmail());
+            pessoaAtualizado.setIdade(pessoaDTO.getIdade());
+            pessoaAtualizado.setStatusSocial(pessoaDTO.getStatusSocial());
+            pessoaAtualizado.setAtividades(pessoaDTO.getAtividades());
             Pessoa pessoaSalvo = repositoryPessoa.save(pessoaAtualizado);
             return pessoaMapper.map(pessoaSalvo);
         }
