@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequestMapping("pessoas")
 public class ControllerPessoa {
 
-    private ServicePessoa servicePessoa;
+    private final ServicePessoa servicePessoa;
 
     public ControllerPessoa(ServicePessoa servicePessoa) {
         this.servicePessoa = servicePessoa;
