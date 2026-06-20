@@ -47,7 +47,7 @@ public class ServicePessoa {
             pessoaAtualizado.setEmail(pessoaDTO.getEmail());
             pessoaAtualizado.setIdade(pessoaDTO.getIdade());
             pessoaAtualizado.setStatusSocial(pessoaDTO.getStatusSocial());
-            pessoaAtualizado.setAtividades(pessoaDTO.getAtividades());
+            pessoaAtualizado.setAtividade(pessoaDTO.getAtividades());
             Pessoa pessoaSalvo = repositoryPessoa.save(pessoaAtualizado);
             return pessoaMapper.map(pessoaSalvo);
         }

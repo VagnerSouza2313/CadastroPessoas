@@ -10,7 +10,7 @@ import java.util.List;
 public class AtividadeController {
 
     private ServiceAtividade  serviceAtividade;
-    private AtividadeMapper atividadeMapper = new AtividadeMapper();
+    private AtividadeMapper atividadeMapper;
 
     public AtividadeController(ServiceAtividade serviceAtividade, AtividadeMapper atividadeMapper) {
         this.serviceAtividade = serviceAtividade;

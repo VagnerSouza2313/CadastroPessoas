@@ -11,7 +11,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@ToString(exclude = "atividades")
 @Table(name = "tb_cadastro")
 public class Pessoa {
 
@@ -30,7 +29,7 @@ public class Pessoa {
 
     @ManyToOne
     @JoinColumn(name = "atividades_id")
-    private Atividade atividades;
+    private Atividade atividade;
 
 
 }

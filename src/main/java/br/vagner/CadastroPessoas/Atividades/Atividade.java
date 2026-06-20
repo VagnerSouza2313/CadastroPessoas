@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,8 +26,8 @@ public class Atividade {
     private String atividade;
     private String grau;
 
-    @OneToMany(mappedBy = "atividades")
+    @OneToMany(mappedBy = "atividade")
     @JsonIgnore
-    private List<Pessoa> pessoas;
+    private List<Pessoa> pessoas = new ArrayList<>();
 
 }

@@ -10,9 +10,9 @@ public class PessoaMapper {
         pessoa.setId(pessoaDTO.getId());
         pessoa.setNome(pessoaDTO.getNome());
         pessoa.setEmail(pessoaDTO.getEmail());
-        pessoa.setAtividades(pessoaDTO.getAtividades());
+        pessoa.setAtividade(pessoaDTO.getAtividades());
         pessoa.setStatusSocial(pessoaDTO.getStatusSocial());
-        pessoa.setAtividades(pessoaDTO.getAtividades());
+        pessoa.setAtividade(pessoaDTO.getAtividades());
         return pessoa;
     }
 
@@ -24,7 +24,7 @@ public class PessoaMapper {
             pessoaDTO.setIdade(pessoa.getIdade());
             pessoaDTO.setEmail(pessoa.getEmail());
             pessoaDTO.setStatusSocial(pessoa.getStatusSocial());
-            pessoaDTO.setAtividades(pessoa.getAtividades());
+            pessoaDTO.setAtividades(pessoa.getAtividade());
 
             return pessoaDTO;
     }
